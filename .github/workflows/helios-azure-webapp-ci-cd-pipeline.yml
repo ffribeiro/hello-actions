@@ -1,0 +1,30 @@
+# creating workflow for WebApp build and deployment
+
+name: Azure WebApp build and Deploy
+
+permissions:
+  contents: read
+  pull-requests: write
+  id-token: write
+  security-events: write
+on:
+  push:
+    branches:
+      - 'main'
+  pull_request:
+    branches:
+      - 'main'
+  workflow_dispatch:
+
+env:
+  project: 'helios-azure-webapp'
+  AZURE_WEBAPP_NAME: 'your-webapp-name'
+  AZURE_WEBAPP_PACKAGE_PATH: '.'
+    
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      # Add your build and deploy steps here
+
